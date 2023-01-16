@@ -17,8 +17,9 @@ let salaries = [{
     salary: 1000
 }, {
     id: 3,
-    salary: 2000
+    salary: 2000 
 }];
+
 let getEmployee = (selectedEmployee) => new Promise((resolve, reject) => {
 
     const correctEmployee = employees.find(x => x.id == selectedEmployee)
