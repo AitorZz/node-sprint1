@@ -1,5 +1,5 @@
 
-export let employees = [{
+let employees = [{
     id: 1,
     name: 'Linux Torvalds'
 }, {
@@ -18,7 +18,7 @@ const getData = () => {
     })
 };
 
-export async function fetchedData() {
+ async function fetchedData() {
     try {
         const allData = await getData();
         return (allData);
@@ -29,3 +29,7 @@ export async function fetchedData() {
 };
 
 fetchedData();
+
+module.exports.fetchedData = fetchedData
+module.exports.employees = employees
+

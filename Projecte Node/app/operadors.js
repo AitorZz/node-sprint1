@@ -1,46 +1,45 @@
 
-export const operadors = {
 
-    sum(a, b) {
-        if (typeof a && typeof b == 'number') {
+    const sum = (a, b) => {
+        if (isNaN(a) || isNaN(b)) {
+            throw new Error('All input data should be a number')
+          }
             return a + b
-        }
-        else {
-            return 'All input data should be a number'
-        }
-    },
+        
+    };
 
-    rest(a, b) {
-        if (typeof a && typeof b == 'number') {
+    const rest = (a, b) => {    
+        if (isNaN(a) || isNaN(b)) {
+            throw new Error('All input data should be a number')
+          }
             return a - b
-        }
-        else {
-            return 'All input data should be a number'
-        }
-    },
+       
+    };
 
-    mult(a, b) {
-        if (typeof a && typeof b == 'number') {
+    const mult = (a, b) => {    
+        if (isNaN(a) || isNaN(b)) {
+            throw new Error('All input data should be a number')
+          }
+           
             return a * b
-        }
-        else {
-            return 'All input data should be a number'
-        }
-    },
+     
+    };
 
-    div(a, b) {
-        if ( b === 0) {
-            return 'You can not divide between 0'
+    const div = (a, b) => {
+        if (isNaN(a) || isNaN(b)) {
+            throw new Error('All input data should be a number')
+          }
+        else if ( b === 0) {
+            throw new Error('You can not divide between 0')
         }
-        else if (typeof a == 'number' && typeof b == 'number') {
             return a / b
-        }
-        else {
-            return 'All input data should be a number'
-        } 
+      
     }
-}
 
+    module.exports.sum = sum
+    module.exports.rest = rest
+    module.exports.mult = mult
+    module.exports.div = div
 
 
 

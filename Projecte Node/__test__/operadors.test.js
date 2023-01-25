@@ -1,41 +1,47 @@
-import { operadors } from "../app/operadors";
+const { describe, expect } = require("@jest/globals")
+const { sum, rest, mult, div } = require("../app/operadors")
 
-
-test('Sum calculator data is correct', () => {
-    const result = operadors.sum(1, 2);
-    expect(result).toBe(3);
-})
-test('Sum calculator data is not a number ', () => {
-    const result = operadors.sum(1, 'a');
-    expect(result).toStrictEqual('All input data should be a number')
-})
-
-test('Rest calculator', () => {
-    const result = operadors.rest(1, 2);
-    expect(result).toBe(-1);
-})
-test('Rest calculator data is not a number ', () => {
-    const result = operadors.rest(1, 'a');
-    expect(result).toStrictEqual('All input data should be a number')
-})
-test('Mult calculator', () => {
-    const result = operadors.mult(1, 2);
-    expect(result).toBe(2);
-})
-test('Mult calculator data is not a number ', () => {
-    const result = operadors.mult(1, 'a');
-    expect(result).toStrictEqual('All input data should be a number')
-})
-test('Div calculator', () => {
-    const result = operadors.div(1, 2);
-    expect(result).toBe(0.5);
-})
-test('Div calculator data is not a number ', () => {
-    const result = operadors.div(1, 'a');
-    expect(result).toStrictEqual('All input data should be a number')
+describe('Test sum operador', () => {
+    test('Sum calculator data is correct', () => {
+        expect(sum(1, 2)).toBe(3);
+        expect(sum(1, 2)).not.toBe(2);
+        expect(() => { sum(1, 'a') }).toThrow(new Error('All input data should be a number'));
+        expect(() => { sum(1,) }).toThrow(new Error('All input data should be a number'));
+        expect(() => { sum() }).toThrow(new Error('All input data should be a number'));
+        expect(() => { sum('a', 'b') }).toThrow(new Error('All input data should be a number'));
+    })
 })
 
-test('Any of the Div calculator data is not a 0 ', () => {
-    const result = operadors.div(2,0);
-    expect(result).toStrictEqual('You can not divide between 0')
+describe('Test rest operador', () => {
+    test('Rest calculator', () => {
+        expect(rest(1, 2)).toBe(-1);
+        expect(rest(1, 2)).not.toBe(1)
+        expect(() => { rest(1, 'a') }).toThrow(new Error('All input data should be a number'))
+        expect(() => { rest(1,) }).toThrow(new Error('All input data should be a number'))
+        expect(() => { rest() }).toThrow(new Error('All input data should be a number'))
+        expect(() => { rest('a', 'b') }).toThrow(new Error('All input data should be a number'))
+    })
+})
+
+describe('Test mult operador', () => {
+    test('Mult calculator', () => {
+        expect(mult(1, 2)).toBe(2);
+        expect(mult(1, 2)).not.toBe(1)
+        expect(() => { mult(1, 'a') }).toThrow(new Error('All input data should be a number'))
+        expect(() => { mult(1,) }).toThrow(new Error('All input data should be a number'))
+        expect(() => { mult() }).toThrow(new Error('All input data should be a number'))
+        expect(() => { mult('a', 'b') }).toThrow(new Error('All input data should be a number'))
+    })
+})
+
+describe('Test div operador', () => {
+    test('Div calculator', () => {
+        expect(div(1, 2)).toBe(0.5);
+        expect(div(1, 2)).not.toBe(1)
+        expect(() => {div(1, 'a')}).toThrow(new Error('All input data should be a number'))
+        expect(() => {div(2, 0)}).toThrow('You can not divide between 0')
+        expect(() => {div(1,)}).toThrow(new Error('All input data should be a number'))
+        expect(() => {div()}).toThrow(new Error('All input data should be a number'))
+        expect(() => {div('a', 'b')}).toThrow(new Error('All input data should be a number'))
+    })
 })

@@ -1,5 +1,4 @@
-
-export let employees = [{
+ let employees = [{
     id: 1,
     name: 'Linux Torvalds'
 }, {
@@ -10,7 +9,7 @@ export let employees = [{
     name: 'Jeff Bezos'
 }];
 
-export let salaries = [{
+ let salaries = [{
     id: 1,
     salary: 4000
 }, {
@@ -21,7 +20,7 @@ export let salaries = [{
     salary: 2000
 }];
 
-export let getSalary = (employeesObject) => new Promise((resolve, reject) => {
+let getSalary = (employeesObject) => new Promise((resolve, reject) => {
 
     const salariesObject = salaries.find(x => x.id == employeesObject.id)
 
@@ -35,3 +34,7 @@ export let getSalary = (employeesObject) => new Promise((resolve, reject) => {
 getSalary(employees[1])
     .then(res => { return (res) })
     .catch(err => { return (err) })
+
+module.exports.getSalary = getSalary
+module.exports.salaries = salaries
+module.exports.employees = employees

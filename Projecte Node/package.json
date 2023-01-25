@@ -1,17 +1,15 @@
 {
   "name": "projecte-node",
-  "version": "0.0.1",
-  "description": "Projecte Node per fer testing.",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "devDependencies": {
-    "@babel/core": "^7.20.12",
-    "@babel/preset-env": "^7.20.2",
-    "babel-jest": "^29.3.1"
-  },
   "scripts": {
     "test": "jest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.4.0"
+  }
 }

@@ -1,6 +1,6 @@
 
 
-     export const datosSaludo = (nombre, apellido, callback) => {
+ const datosSaludo = (nombre, apellido, callback) => {
 
     if (nombre === 'Aitor' && apellido !== 'Zamora') {
         let result = 'Aitor'
@@ -12,11 +12,15 @@
         let result = 'Aitor Zamora'
         callback(result)
     } else {
-        throw Error('Introduce a correct name')
+        throw new Error('Introduce a correct name')
     }
 }
 
-export let imprimirSaludo = (result) => {return `Hola ${result}`}
+ let imprimirSaludo = (result) => {return `Hola ${result}`}
 
 datosSaludo('Aitor', 'Zamora', imprimirSaludo);
+
+module.exports.datosSaludo = datosSaludo
+module.exports.imprimirSaludo = imprimirSaludo
+
 

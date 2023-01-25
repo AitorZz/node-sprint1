@@ -10,7 +10,7 @@ let employees = [{
     name: 'Jeff Bezos'
 }];
 
-export let getEmployee = (selectedEmployee) => new Promise((resolve, reject) => {
+ let getEmployee = (selectedEmployee) => new Promise((resolve, reject) => {
 
     const correctEmployee = employees.find(x => x.id == selectedEmployee)
 
@@ -25,3 +25,5 @@ export let getEmployee = (selectedEmployee) => new Promise((resolve, reject) => 
 getEmployee(2)
     .then(res => { return (res) })
     .catch(err => { return (err) })
+
+module.exports.getEmployee = getEmployee
