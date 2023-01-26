@@ -1,29 +1,35 @@
-
-let employees = [{
+let employees = [
+  {
     id: 1,
-    name: 'Linux Torvalds'
-}, {
+    name: "Linux Torvalds",
+  },
+  {
     id: 2,
-    name: 'Bill Gates'
-}, {
+    name: "Bill Gates",
+  },
+  {
     id: 3,
-    name: 'Jeff Bezos'
-}];
+    name: "Jeff Bezos",
+  },
+];
 
- let getEmployee = (selectedEmployee) => new Promise((resolve, reject) => {
+let getEmployee = (selectedEmployee) =>
+  new Promise((resolve, reject) => {
+    const correctEmployee = employees.find((x) => x.id == selectedEmployee);
 
-    const correctEmployee = employees.find(x => x.id == selectedEmployee)
-
-    if (typeof selectedEmployee == "number"  && selectedEmployee > 0) {
-        resolve(correctEmployee)
-
+    if (typeof selectedEmployee == "number" && selectedEmployee > 0) {
+      resolve(correctEmployee);
     } else {
-        reject('This Id does not exist.')
+      reject("This Id does not exist.");
     }
-})
+  });
 
 getEmployee(2)
-    .then(res => { return (res) })
-    .catch(err => { return (err) })
+  .then((res) => {
+    return res;
+  })
+  .catch((err) => {
+    return err;
+  });
 
-module.exports.getEmployee = getEmployee
+module.exports.getEmployee = getEmployee;

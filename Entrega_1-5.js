@@ -1,60 +1,52 @@
-var fs = require('fs');
-var zlib = require('zlib');
+var fs = require("fs");
+var zlib = require("zlib");
 
 // - Exercici 1.1  Crea una funció que, en executar-la, escrigui una frase en un fitxer.
 
-
 function createFile(file, message) {
-
-
-    fs.writeFile(file, message, function (err) {
-        if (err) return console.log(err);
-    });
+  fs.writeFile(file, message, function (err) {
+    if (err) return console.log(err);
+  });
 }
 
-createFile('helloworld.txt', 'Hello World!')
+createFile("helloworld.txt", "Hello World!");
 
 // - Exercici 1.2 Crea una altra funció que mostri per consola el contingut del fitxer de l'exercici anterior.
 
-
 function showContent(file) {
-
-    fs.readFile(file, (err, buff) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        console.log(buff.toString());
-    })
+  fs.readFile(file, (err, buff) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(buff.toString());
+  });
 }
 
-showContent('helloworld.txt')
+showContent("helloworld.txt");
 
 // - Exercici 1.3 Crea una funció que comprimeixi el fitxer del nivell 1.
 
-
 function fileCompressor(file) {
-
-    var gzip = zlib.createGzip();
-    var r = fs.createReadStream(file);
-    var w = fs.createWriteStream('mygzipfile.txt.gz');
-    r.pipe(gzip).pipe(w);
+  var gzip = zlib.createGzip();
+  var r = fs.createReadStream(file);
+  var w = fs.createWriteStream("mygzipfile.txt.gz");
+  r.pipe(gzip).pipe(w);
 }
 
-fileCompressor('helloworld.txt')
+fileCompressor("helloworld.txt");
 
 /* - Exercici 2.1 Crea una funció que imprimeixi recursivament un missatge 
 per la consola amb demores d'un segon.*/
 
 function missatgeRecursiu() {
-
-    setInterval(() => console.log('Bon any nou!'), 1000);
+  setInterval(() => console.log("Bon any nou!"), 1000);
 }
 
 missatgeRecursiu();
 
 // (Pre) Corretgit amb el Tomas, vaig fer primerament aquest compte enrere que hi ha asota,
-// però interpretem que no és correcte perquè no es repeteix el mateix missatge. 
+// però interpretem que no és correcte perquè no es repeteix el mateix missatge.
 //   function newYearCountDown(number) {
 //     setTimeout(() => {
 
@@ -75,29 +67,18 @@ missatgeRecursiu();
 
 // newYearCountDown(12);
 
-
 // /*- Exercici 2.2
 // Crea una funció que llisti per la consola el contingut del directori
 //  d'usuari/ària de l'ordinador utilizant Node Child Processes.*/
 
 function listWindowsDir() {
+  const nodeChildProcess = require("child_process");
 
-    const nodeChildProcess = require("child_process");
+  let comando = nodeChildProcess.spawn("cmd", ["/c", "dir C:\\Windows\n"]);
 
-
-    let comando = nodeChildProcess.spawn('cmd', ['/c', 'dir C:\\Windows\n']);
-
-
-    comando.stdout.on('data', function (datos) {
-        console.log(datos.toString());
-    });
-
+  comando.stdout.on("data", function (datos) {
+    console.log(datos.toString());
+  });
 }
 
 listWindowsDir();
-
-
-
-
-
-

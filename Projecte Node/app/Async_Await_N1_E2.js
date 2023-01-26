@@ -1,35 +1,36 @@
-
-let employees = [{
+let employees = [
+  {
     id: 1,
-    name: 'Linux Torvalds'
-}, {
+    name: "Linux Torvalds",
+  },
+  {
     id: 2,
-    name: 'Bill Gates'
-}, {
+    name: "Bill Gates",
+  },
+  {
     id: 3,
-    name: 'Jeff Bezos'
-}];
+    name: "Jeff Bezos",
+  },
+];
 
 const getData = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(employees);
-        }, 1500)
-    })
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(employees);
+    }, 1500);
+  });
 };
 
- async function fetchedData() {
-    try {
-        const allData = await getData();
-        return (allData);
-    }
-    catch (error) {
-        return (error);
-    }
-};
+async function fetchedData() {
+  try {
+    const allData = await getData();
+    return allData;
+  } catch (error) {
+    return error;
+  }
+}
 
 fetchedData();
 
-module.exports.fetchedData = fetchedData
-module.exports.employees = employees
-
+module.exports.fetchedData = fetchedData;
+module.exports.employees = employees;
